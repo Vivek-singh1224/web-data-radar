@@ -236,13 +236,27 @@ const Index = () => {
     setFilteredProducts(sampleProducts);
   }, []);
 
+  // Shuffle array function
+  const shuffleArray = (array: Product[]) => {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  };
+
   const handleRefresh = () => {
     setRefreshing(true);
     
-    // Simulate refresh by reloading the sample data
+    // Shuffle the products to show a visible change
     setTimeout(() => {
-      setProducts(sampleProducts);
-      setFilteredProducts(sampleProducts);
+      const shuffledProducts = shuffleArray(sampleProducts);
+      setProducts(shuffledProducts);
+      
+      // Apply current filters to the shuffled data
+      filterProducts(searchTerm, selectedCategory, priceRange, shuffledProducts);
+      
       setRefreshing(false);
       
       toast({
@@ -276,8 +290,8 @@ const Index = () => {
     filterProducts(searchTerm, selectedCategory, range);
   };
 
-  const filterProducts = (term: string, category: string, range: { min: number; max: number }) => {
-    let filtered = products;
+  const filterProducts = (term: string, category: string, range: { min: number; max: number }, productList = products) => {
+    let filtered = productList;
 
     if (term) {
       filtered = filtered.filter(product =>
