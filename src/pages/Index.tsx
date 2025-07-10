@@ -6,7 +6,8 @@ import { CrawlForm } from '@/components/CrawlForm';
 import { Header } from '@/components/Header';
 import { StatsDisplay } from '@/components/StatsDisplay';
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Radar } from 'lucide-react';
+import { Loader2, Radar, RefreshCw } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface Product {
   id: string;
@@ -22,6 +23,7 @@ const Index = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [priceRange, setPriceRange] = useState({ min: 0, max: 100000 });
@@ -234,6 +236,22 @@ const Index = () => {
     setFilteredProducts(sampleProducts);
   }, []);
 
+  const handleRefresh = () => {
+    setRefreshing(true);
+    
+    // Simulate refresh by reloading the sample data
+    setTimeout(() => {
+      setProducts(sampleProducts);
+      setFilteredProducts(sampleProducts);
+      setRefreshing(false);
+      
+      toast({
+        title: "Data Refreshed",
+        description: "Product data has been updated successfully",
+      });
+    }, 1000);
+  };
+
   const handleCrawlComplete = (newProducts: Product[]) => {
     setProducts(newProducts);
     setFilteredProducts(newProducts);
@@ -320,7 +338,30 @@ const Index = () => {
             </div>
 
             <div className="lg:col-span-3">
-              <StatsDisplay products={filteredProducts} totalProducts={products.length} />
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex-1">
+                  <StatsDisplay products={filteredProducts} totalProducts={products.length} />
+                </div>
+                <Button
+                  onClick={handleRefresh}
+                  disabled={refreshing}
+                  variant="outline"
+                  size="sm"
+                  className="ml-4 bg-white/10 border-gray-600 text-white hover:bg-white/20"
+                >
+                  {refreshing ? (
+                    <>
+                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      Refreshing...
+                    </>
+                  ) : (
+                    <>
+                      <RefreshCw className="h-4 w-4 mr-2" />
+                      Refresh
+                    </>
+                  )}
+                </Button>
+              </div>
               
               {loading ? (
                 <div className="flex items-center justify-center py-20">
