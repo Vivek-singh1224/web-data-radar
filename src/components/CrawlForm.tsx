@@ -134,7 +134,7 @@ export const CrawlForm: React.FC<CrawlFormProps> = ({ onDataFetched }) => {
       console.error('Error extracting products:', error);
     }
     
-    return products.slice(0, 20); // Limit to first 20 products
+    return products.slice(0, 50); // Increased limit to 50 products
   };
 
   const extractPrice = (text: string): string => {

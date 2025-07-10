@@ -60,7 +60,7 @@ export class FirecrawlService {
       }
 
       const crawlResponse = await this.firecrawlApp.crawlUrl(url, {
-        limit: 20,
+        limit: 50, // Increased from 20 to 50 to get more products
         scrapeOptions: {
           formats: ['markdown', 'html'],
         }

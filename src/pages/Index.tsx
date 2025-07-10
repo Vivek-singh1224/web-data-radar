@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ProductCard } from '@/components/ProductCard';
 import { SearchAndFilter } from '@/components/SearchAndFilter';
@@ -28,7 +27,7 @@ const Index = () => {
   const [priceRange, setPriceRange] = useState({ min: 0, max: 100000 });
   const { toast } = useToast();
 
-  // Sample data to demonstrate the interface
+  // Expanded sample data with 20+ products
   const sampleProducts: Product[] = [
     {
       id: '1',
@@ -74,6 +73,159 @@ const Index = () => {
       link: 'https://example.com/asus-b650e',
       category: 'Motherboards',
       source: 'MoBo World'
+    },
+    {
+      id: '6',
+      title: 'Intel Core i9-14900K',
+      description: '24-core flagship processor for enthusiasts',
+      price: '₹52,000',
+      link: 'https://example.com/i9-14900k',
+      category: 'Processors',
+      source: 'ComponentHub'
+    },
+    {
+      id: '7',
+      title: 'RTX 4060 Ti 16GB',
+      description: 'Mid-range gaming GPU with 16GB VRAM',
+      price: '₹48,500',
+      link: 'https://example.com/rtx-4060ti',
+      category: 'Graphics Cards',
+      source: 'TechShop'
+    },
+    {
+      id: '8',
+      title: 'G.Skill Trident Z5 32GB',
+      description: 'DDR5-6000 high-performance RAM kit',
+      price: '₹18,900',
+      link: 'https://example.com/gskill-ram',
+      category: 'Memory',
+      source: 'RAMStore'
+    },
+    {
+      id: '9',
+      title: 'WD Black SN850X 1TB',
+      description: 'Gaming-focused NVMe SSD with heatsink',
+      price: '₹9,800',
+      link: 'https://example.com/wd-black',
+      category: 'Storage',
+      source: 'TechMart'
+    },
+    {
+      id: '10',
+      title: 'MSI MAG B650 Tomahawk',
+      description: 'Feature-rich AM5 motherboard for gaming',
+      price: '₹22,500',
+      link: 'https://example.com/msi-tomahawk',
+      category: 'Motherboards',
+      source: 'MoBo World'
+    },
+    {
+      id: '11',
+      title: 'EVGA SuperNOVA 750W',
+      description: '80+ Gold fully modular power supply',
+      price: '₹9,900',
+      link: 'https://example.com/evga-750w',
+      category: 'Power Supply',
+      source: 'PowerStore'
+    },
+    {
+      id: '12',
+      title: 'AMD RX 7800 XT',
+      description: 'High-performance 1440p gaming graphics card',
+      price: '₹54,000',
+      link: 'https://example.com/rx-7800xt',
+      category: 'Graphics Cards',
+      source: 'TechShop'
+    },
+    {
+      id: '13',
+      title: 'Corsair Vengeance 32GB',
+      description: 'DDR5-5600 optimized for AMD platforms',
+      price: '₹16,200',
+      link: 'https://example.com/corsair-vengeance',
+      category: 'Memory',
+      source: 'RAMStore'
+    },
+    {
+      id: '14',
+      title: 'Seagate FireCuda 2TB',
+      description: 'High-speed NVMe SSD for gaming and content creation',
+      price: '₹14,800',
+      link: 'https://example.com/seagate-firecuda',
+      category: 'Storage',
+      source: 'TechMart'
+    },
+    {
+      id: '15',
+      title: 'Intel Core i5-14600K',
+      description: '14-core processor perfect for gaming builds',
+      price: '₹28,500',
+      link: 'https://example.com/i5-14600k',
+      category: 'Processors',
+      source: 'ComponentHub'
+    },
+    {
+      id: '16',
+      title: 'GIGABYTE Z790 AORUS',
+      description: 'Premium Intel Z790 motherboard with RGB',
+      price: '₹32,000',
+      link: 'https://example.com/gigabyte-z790',
+      category: 'Motherboards',
+      source: 'MoBo World'
+    },
+    {
+      id: '17',
+      title: 'be quiet! Pure Power 650W',
+      description: 'Silent and efficient 80+ Gold PSU',
+      price: '₹8,500',
+      link: 'https://example.com/bequiet-650w',
+      category: 'Power Supply',
+      source: 'PowerStore'
+    },
+    {
+      id: '18',
+      title: 'RTX 4080 Super',
+      description: 'High-end gaming GPU for 4K performance',
+      price: '₹98,000',
+      link: 'https://example.com/rtx-4080s',
+      category: 'Graphics Cards',
+      source: 'TechShop'
+    },
+    {
+      id: '19',
+      title: 'Kingston Fury Beast 16GB',
+      description: 'DDR4-3200 reliable gaming memory',
+      price: '₹5,800',
+      link: 'https://example.com/kingston-fury',
+      category: 'Memory',
+      source: 'RAMStore'
+    },
+    {
+      id: '20',
+      title: 'Crucial P3 Plus 1TB',
+      description: 'Budget-friendly NVMe SSD with good performance',
+      price: '₹6,900',
+      link: 'https://example.com/crucial-p3',
+      category: 'Storage',
+      source: 'TechMart'
+    },
+    {
+      id: '21',
+      title: 'AMD Ryzen 5 7600X',
+      description: '6-core processor ideal for gaming and productivity',
+      price: '₹24,000',
+      link: 'https://example.com/ryzen-7600x',
+      category: 'Processors',
+      source: 'ComponentHub'
+    },
+    {
+      id: '22',
+      title: 'RTX 4050 6GB',
+      description: 'Entry-level gaming GPU for 1080p gaming',
+      price: '₹28,500',
+      link: 'https://example.com/rtx-4050',
+      category: 'Graphics Cards',
+      source: 'TechShop'
     }
   ];
 
